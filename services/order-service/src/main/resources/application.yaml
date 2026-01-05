@@ -7,6 +7,6 @@ spring:
     password: mysql
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
 server:
   port: 4001

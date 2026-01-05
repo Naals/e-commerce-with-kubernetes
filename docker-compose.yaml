@@ -17,11 +17,11 @@ services:
     container_name: ecommerce_mysql_db
     environment:
       MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: order_service
     ports:
       - "3306:3306"
     volumes:
       - mysql:/var/lib/mysql
-      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
   mongo:
