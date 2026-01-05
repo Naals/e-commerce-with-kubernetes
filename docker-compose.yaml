@@ -10,4 +10,19 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: password
       MONGO_INITDB_DATABASE: product
     volumes:
-      - ./data/mongodb:/data/db
+      - mongo:/data
+
+  mysql:
+    image: mysql:8.3.0
+    container_name: ecommerce_mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  mongo:
+  mysql:

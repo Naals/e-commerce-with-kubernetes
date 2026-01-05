@@ -9,3 +9,5 @@ spring:
     database: product
     authentication-database: admin
 
+server:
+  port: 4000

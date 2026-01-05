@@ -31,8 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-### Mongo ###
-/data/mongo/
-/data/mongodb/
-/mongo-data/
