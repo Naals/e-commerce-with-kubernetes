@@ -10,3 +10,6 @@ spring:
       ddl-auto: update
 server:
   port: 4001
+
+inventory:
+ url: http://localhost:4002
