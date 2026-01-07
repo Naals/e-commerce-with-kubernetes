@@ -1,29 +1,77 @@
+server:
+  port: 5001
+
 spring:
   application:
     name: api-gateway
-  cloud:
-    gateway:
-      server:
-        webflux:
-          routes:
-            - id: product-service
-              uri: http://localhost:4000
-              predicates:
-                - Path=/api/product/**
 
-            - id: order-service
-              uri: http://localhost:4001
-              predicates:
-                - Path=/api/order/**
-
-            - id: inventory-service
-              uri: http://localhost:4002
-              predicates:
-                - Path=/api/inventory/**
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http:localhost:8081/realms/spring-microservice-realm
-server:
-  port: 5001
+          issuer-uri: http://localhost:8181/realms/spring-microservice-security-realm
+
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - name: Product Service
+        url: /aggregate/product-service/v3/api-docs
+      - name: Order Service
+        url: /aggregate/order-service/v3/api-docs
+      - name: Inventory Service
+        url: /aggregate/inventory-service/v3/api-docs
+  api-docs:
+    path: /api-docs
+
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  endpoint:
+    health:
+      show-details: always
+
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        minimum-number-of-calls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+  timelimiter:
+    configs:
+      default:
+        timeout-duration: 3s
+  retry:
+    configs:
+      default:
+        max-attempts: 3
+        wait-duration: 2s
+
+
+
+product:
+  service:
+    url: http://localhost:4000
+
+order:
+  service:
+    url: http://localhost:4001
+
+inventory:
+  service:
+    url: http://localhost:4002
