@@ -12,4 +12,5 @@ server:
   port: 4001
 
 inventory:
- url: http://localhost:4002
+  service:
+    url: http://localhost:4002
