@@ -8,6 +8,13 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  kafka:
+    bootstrap-servers: localhost:9092
+    template:
+      default-topic: order-placed
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
 server:
   port: 4001
 
