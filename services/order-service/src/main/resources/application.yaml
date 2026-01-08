@@ -15,6 +15,9 @@ spring:
     producer:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties:
+        spring.json.type.mapping: event:com.project.ecommerce.event.OrderPlacedEvent
+
 server:
   port: 4001
 

@@ -8,8 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="api-gateway" />
+        <module name="notification-service" />
       </profile>
-      <profile name="Annotation profile for order-service" enabled="true">
+      <profile name="Annotation profile for product-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -23,6 +24,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="demo" target="17" />
+      <module name="notification-service-2" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -30,6 +32,8 @@
       <module name="api-gateway" options="-parameters" />
       <module name="demo" options="-parameters" />
       <module name="inventory-service" options="-parameters" />
+      <module name="notification-service" options="-parameters" />
+      <module name="notification-service-2" options="-parameters" />
       <module name="order-service" options="-parameters" />
       <module name="product-service" options="-parameters" />
     </option>
