@@ -27,4 +27,4 @@ spring:
         writetimeout: 5000
 
 server:
-  port: 4004
+  port: 4003
