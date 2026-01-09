@@ -26,5 +26,8 @@ spring:
         timeout: 3000
         writetimeout: 5000
 
+loki:
+  url: http://localhost:3100/loki/api/v1/push
+
 server:
   port: 4003

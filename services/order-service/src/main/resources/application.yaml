@@ -24,3 +24,6 @@ server:
 inventory:
   service:
     url: http://localhost:4002
+
+loki:
+  url: http://localhost:3100/loki/api/v1/push

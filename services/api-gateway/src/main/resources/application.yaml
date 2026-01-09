@@ -62,7 +62,8 @@ resilience4j:
         max-attempts: 3
         wait-duration: 2s
 
-
+loki:
+  url: http://localhost:3100/loki/api/v1/push
 
 product:
   service:
